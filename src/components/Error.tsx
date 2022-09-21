@@ -30,7 +30,7 @@ export default function ErrorMessage({
   return (
     <Dialog open={openDialog} aria-describedby="alert-dialog-description">
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
+        <DialogContentText component={"span"} id="alert-dialog-description">
           <Alert
             severity="error"
             sx={{

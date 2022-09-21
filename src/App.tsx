@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ModalComponent from "./components/Modal";
 import ErrorMessage from "./components/Error";
+import ErrorBoundary from "./ErrorBoundary";
 import axios from "axios";
 
 function App() {
@@ -58,27 +59,31 @@ function App() {
     )
   );
 
-  return errorStorage.isError ? (
-    <ErrorMessage errorStorage={errorStorage} />
-  ) : (
-    <ImageList cols={3}>
-      {contentLoaded ? (
-        imagesArrMapped
+  return (
+    <ErrorBoundary>
+      {errorStorage.isError ? (
+        <ErrorMessage errorStorage={errorStorage} />
       ) : (
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={!contentLoaded}
-        >
-          <CircularProgress color="inherit" sx={{ marginRight: "20px" }} />
-          <h2>Loading</h2>
-        </Backdrop>
-      )}{" "}
-      <ModalComponent
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        element={imagesArr[openModal.index]}
-      />
-    </ImageList>
+        <ImageList cols={3}>
+          {contentLoaded ? (
+            imagesArrMapped
+          ) : (
+            <Backdrop
+              sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={!contentLoaded}
+            >
+              <CircularProgress color="inherit" sx={{ marginRight: "20px" }} />
+              <h2>Loading</h2>
+            </Backdrop>
+          )}{" "}
+          <ModalComponent
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            element={imagesArr[openModal.index]}
+          />
+        </ImageList>
+      )}
+    </ErrorBoundary>
   );
 }
 

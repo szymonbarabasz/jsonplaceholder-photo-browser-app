@@ -45,7 +45,7 @@ export default function ModalComponent({
         <Box sx={style} className={imageLoaded ? "box" : "loadingBox"}>
           <img src={element.url} onLoad={() => setImageLoaded(true)} />
           {imageLoaded ? (
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography component={"span"} sx={{ mt: 2 }}>
               {`Numer albumu: ${element.albumId}`}
               <br />
               {`ID zdjęcia: ${element.id}`}

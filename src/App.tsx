@@ -64,7 +64,7 @@ function App() {
       {errorStorage.isError ? (
         <ErrorMessage errorStorage={errorStorage} />
       ) : (
-        <ImageList cols={3}>
+        <ImageList style={{ marginTop: "4px" }} cols={3}>
           {contentLoaded ? (
             imagesArrMapped
           ) : (

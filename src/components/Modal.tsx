@@ -46,6 +46,7 @@ export default function ModalComponent({
           <img src={element.url} onLoad={() => setImageLoaded(true)} />
           {imageLoaded ? (
             <Typography component={"span"} sx={{ mt: 2 }}>
+              <br />
               {`Numer albumu: ${element.albumId}`}
               <br />
               {`ID zdjęcia: ${element.id}`}
